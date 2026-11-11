@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+
+<title>Utility Hub | Prabhakar Singh</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= GLOBAL ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --primary:#315bd6;
+    --primary-dark:#2448b3;
+    --heading:#17243a;
+    --text:#536176;
+    --muted:#8994a5;
+    --border:#e8edf3;
+    --page:#fafbfc;
+    --white:#ffffff;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--page);
+    color:var(--heading);
+    font-family:'DM Sans',sans-serif;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+}
+
+.container{
+    width:min(1160px,90%);
+    margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    height:76px;
+    background:rgba(255,255,255,.97);
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.nav{
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.brand-icon{
+    width:43px;
+    height:43px;
+    border-radius:10px;
+    background:#315bd6;
+    color:white;
+    display:grid;
+    place-items:center;
+    font-family:'Manrope',sans-serif;
+    font-size:23px;
+    font-weight:800;
+    box-shadow:0 3px 8px rgba(49,91,214,.16);
+}
+
+.brand-name{
+    font-family:'Manrope',sans-serif;
+    font-size:18px;
+    font-weight:800;
+    letter-spacing:-.7px;
+}
+
+.brand-sub{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:3px;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:12px;
+    font-weight:600;
+    color:#39845e;
+}
+
+.header-right span{
+    width:8px;
+    height:8px;
+    background:#36a56e;
+    border-radius:50%;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    padding:95px 0 68px;
+    animation:slideUp .7s ease both;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--primary);
+    background:#eef3ff;
+    padding:8px 13px;
+    border-radius:5px;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    margin-bottom:23px;
+}
+
+.hero h1{
+    font-family:'Manrope',sans-serif;
+    font-size:clamp(37px,5vw,58px);
+    font-weight:800;
+    letter-spacing:-2.7px;
+    line-height:1.17;
+    color:#17243a;
+}
+
+.hero h1 span{
+    color:var(--primary);
+}
+
+.hero p{
+    color:#788497;
+    font-size:15px;
+    line-height:1.9;
+    max-width:570px;
+    margin-top:20px;
+}
+
+/* ================= TOOL SECTION ================= */
+
+.tools-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:22px;
+}
+
+.tools-top h2{
+    font-family:'Manrope',sans-serif;
+    font-size:21px;
+    font-weight:800;
+    letter-spacing:-.6px;
+}
+
+.tools-total{
+    background:#fff;
+    border:1px solid var(--border);
+    padding:7px 13px;
+    border-radius:6px;
+    font-size:11px;
+    font-weight:700;
+    color:#758196;
+}
+
+/* ================= SEARCH ================= */
+
+.search{
+    max-width:390px;
+    height:48px;
+    background:#fff;
+    border:1px solid #e4e9f0;
+    border-radius:7px;
+    display:flex;
+    align-items:center;
+    padding:0 15px;
+    gap:12px;
+    margin-bottom:32px;
+    transition:border-color .25s,box-shadow .25s;
+}
+
+.search:focus-within{
+    border-color:#8da8f0;
+    box-shadow:0 0 0 4px #315bd610;
+}
+
+.search svg{
+    width:19px;
+    height:19px;
+    color:#8491a4;
+    flex-shrink:0;
+}
+
+.search input{
+    width:100%;
+    height:100%;
+    border:none;
+    outline:none;
+    background:transparent;
+    font-family:inherit;
+    font-size:13px;
+    color:var(--heading);
+}
+
+.search input::placeholder{
+    color:#a1aab7;
+}
+
+/* ================= GRID ================= */
+
+.tools-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:24px;
+}
+
+/* ================= TOOL CARDS ================= */
+
+.tool-card{
+    background:#fff;
+    border:1px solid #e9edf2;
+    border-radius:10px;
+    min-height:330px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    transition:transform .3s ease,
+               border-color .3s ease,
+               box-shadow .3s ease;
+    animation:slideUp .65s ease both;
+}
+
+.tool-card:nth-child(2){
+    animation-delay:.1s;
+}
+
+.tool-card:nth-child(3){
+    animation-delay:.2s;
+}
+
+.tool-card:hover{
+    transform:translateY(-5px);
+    border-color:#d5deef;
+    box-shadow:0 14px 35px rgba(27,47,83,.075);
+}
+
+.card-content{
+    padding:29px 27px 24px;
+    flex:1;
+}
+
+/* ================= CUSTOM LOGOS ================= */
+
+.logo{
+    width:65px;
+    height:65px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    margin-bottom:29px;
+    transition:transform .3s ease;
+}
+
+.logo svg{
+    width:39px;
+    height:39px;
+}
+
+.tool-card:hover .logo{
+    transform:scale(1.07);
+}
+
+.logo-red{
+    background:#fff1ef;
+    border:1px solid #ffe0db;
+}
+
+.logo-purple{
+    background:#f3f0ff;
+    border:1px solid #e8e1ff;
+}
+
+.logo-green{
+    background:#eaf8f1;
+    border:1px solid #d7f0e3;
+}
+
+/* ================= CARD TEXT ================= */
+
+.tool-number{
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.3px;
+    color:#a0aaba;
+    margin-bottom:11px;
+}
+
+.tool-card h3{
+    font-family:'Manrope',sans-serif;
+    font-size:19px;
+    font-weight:800;
+    line-height:1.4;
+    letter-spacing:-.65px;
+    color:#202d42;
+    margin-bottom:12px;
+}
+
+.tool-card p{
+    color:#7c889a;
+    font-size:13px;
+    line-height:1.85;
+    max-width:290px;
+}
+
+/* ================= CARD FOOTER ================= */
+
+.card-footer{
+    min-height:60px;
+    padding:0 26px;
+    border-top:1px solid #edf0f4;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    background:#fdfdfd;
+}
+
+.tool-button{
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:#315bd6;
+    font-size:12px;
+    font-weight:800;
+    transition:color .2s,gap .2s;
+}
+
+.tool-button:hover{
+    color:#173caa;
+    gap:14px;
+}
+
+.arrow{
+    font-size:17px;
+    transition:transform .2s;
+}
+
+.tool-button:hover .arrow{
+    transform:translate(3px,-2px);
+}
+
+.tool-type{
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:.8px;
+    color:#a0a9b6;
+    white-space:nowrap;
+}
+
+/* ================= EMPTY SEARCH ================= */
+
+.no-result{
+    display:none;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:8px;
+    text-align:center;
+    padding:35px;
+    color:#8993a1;
+    font-size:13px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#fff;
+    border-top:1px solid var(--border);
+    margin-top:100px;
+    padding:26px 0;
+}
+
+.footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    color:#929cac;
+    font-size:11px;
+}
+
+.footer-inner strong{
+    color:#344158;
+    font-weight:800;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes slideUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ================= TABLET ================= */
+
+@media(max-width:900px){
+
+    .tools-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:18px;
+    }
+
+    .hero{
+        padding-top:75px;
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+    .container{
+        width:91%;
+    }
+
+    header{
+        height:68px;
+    }
+
+    .brand-icon{
+        width:38px;
+        height:38px;
+    }
+
+    .brand-name{
+        font-size:16px;
+    }
+
+    .brand-sub{
+        font-size:10px;
+    }
+
+    .header-right{
+        font-size:10px;
+        gap:7px;
+    }
+
+    .hero{
+        padding:65px 0 48px;
+    }
+
+    .hero h1{
+        font-size:38px;
+        letter-spacing:-1.8px;
+    }
+
+    .hero p{
+        font-size:13px;
+        line-height:1.85;
+    }
+
+    .eyebrow{
+        font-size:9px;
+        letter-spacing:1px;
+    }
+
+    .tools-grid{
+        grid-template-columns:1fr;
+        gap:17px;
+    }
+
+    .tool-card{
+        min-height:310px;
+    }
+
+    .card-content{
+        padding:25px 23px;
+    }
+
+    .card-footer{
+        padding:0 23px;
+    }
+
+    .tools-top h2{
+        font-size:18px;
+    }
+
+    .search{
+        max-width:100%;
+    }
+
+    footer{
+        margin-top:65px;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+
+/* ================= ACCESSIBILITY ================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms!important;
+        transition-duration:.01ms!important;
+        scroll-behavior:auto!important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+    <div class="container nav">
+
+        <div class="brand">
+
+            <div class="brand-icon">U.</div>
+
+            <div>
+                <div class="brand-name">Utility Hub</div>
+                <div class="brand-sub">
+                    Prabhakar Singh · Web Utilities
+                </div>
+            </div>
+
+        </div>
+
+        <div class="header-right">
+            <span></span>
+            All tools available
+        </div>
+
+    </div>
+</header>
+
+
+<!-- MAIN -->
+
+<main class="container">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="eyebrow">
+            PERSONAL WEB TOOL COLLECTION
+        </div>
+
+        <h1>
+            Your everyday tools,<br>
+            <span>all in one place.</span>
+        </h1>
+
+        <p>
+            A simple workspace for managing PDF documents and images.
+            Choose a tool and get your work done without unnecessary steps.
+        </p>
+
+    </section>
+
+
+    <!-- TOOL HEADING -->
+
+    <div class="tools-top">
+
+        <h2>Available Tools</h2>
+
+        <div class="tools-total" id="toolCount">
+            03 Tools
+        </div>
+
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <div class="search">
+
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="m16 16 4 4"/>
+        </svg>
+
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Search your tools..."
+            autocomplete="off"
+        >
+
+    </div>
+
+
+    <!-- TOOLS GRID -->
+
+    <section class="tools-grid" id="toolsGrid">
+
+
+        <!-- TOOL 1: PDF MAKER -->
+
+        <article class="tool-card"
+                 data-search="pdf maker document create converter">
+
+            <div class="card-content">
+
+                <div class="logo logo-red">
+
+                    <svg viewBox="0 0 48 48" fill="none">
+
+                        <path d="M12 5H27L38 16V41H12V5Z"
+                              stroke="#dc4545"
+                              stroke-width="2.5"
+                              stroke-linejoin="round"/>
+
+                        <path d="M27 5V16H38"
+                              stroke="#dc4545"
+                              stroke-width="2.5"/>
+
+                        <path d="M17 25H32M17 31H32"
+                              stroke="#dc4545"
+                              stroke-width="2.5"
+                              stroke-linecap="round"/>
+
+                        <path d="M17 36H27"
+                              stroke="#dc4545"
+                              stroke-width="2.5"
+                              stroke-linecap="round"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="tool-number">
+                    01 / DOCUMENT
+                </div>
+
+                <h3>PDF Maker</h3>
+
+                <p>
+                    Create and convert documents into PDF files
+                    through a simple browser-based workspace.
+                </p>
+
+            </div>
+
+            <div class="card-footer">
+
+                <a class="tool-button"
+                   href="https://thakurprabhakarsingh.github.io/Pdfmaker/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    Open PDF Maker
+                    <span class="arrow">↗</span>
+
+                </a>
+
+                <span class="tool-type">
+                    PDF TOOL
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- TOOL 2: PDF BACKGROUND CHANGER -->
+
+        <article class="tool-card"
+                 data-search="pdf background changer theme color page customize">
+
+            <div class="card-content">
+
+                <div class="logo logo-purple">
+
+                    <svg viewBox="0 0 48 48" fill="none">
+
+                        <rect x="7" y="8"
+                              width="27" height="33"
+                              rx="3"
+                              stroke="#7154d8"
+                              stroke-width="2.5"/>
+
+                        <path d="M13 17H28M13 23H24"
+                              stroke="#7154d8"
+                              stroke-width="2.2"
+                              stroke-linecap="round"/>
+
+                        <path d="M34 14L41 21L29 33L22 35L24 28L34 14Z"
+                              fill="#b7a9ff"
+                              stroke="#7154d8"
+                              stroke-width="2"
+                              stroke-linejoin="round"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="tool-number">
+                    02 / PDF CUSTOMIZATION
+                </div>
+
+                <h3>PDF Background Changer</h3>
+
+                <p>
+                    Customize PDF page backgrounds, modify document
+                    themes and create a cleaner reading experience.
+                </p>
+
+            </div>
+
+            <div class="card-footer">
+
+                <a class="tool-button"
+                   href="https://thakurprabhakarsingh.github.io/Pdf-background-changer/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    Open Background Changer
+                    <span class="arrow">↗</span>
+
+                </a>
+
+                <span class="tool-type">
+                    PDF TOOL
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- TOOL 3: IMAGE SIZE CORRECTER -->
+
+        <article class="tool-card"
+                 data-search="image size correcter resize compress photo dimensions">
+
+            <div class="card-content">
+
+                <div class="logo logo-green">
+
+                    <svg viewBox="0 0 48 48" fill="none">
+
+                        <rect x="5" y="8"
+                              width="38" height="32"
+                              rx="4"
+                              stroke="#219768"
+                              stroke-width="2.5"/>
+
+                        <circle cx="17" cy="19" r="4"
+                                fill="#8dd9b7"/>
+
+                        <path d="M8 34L19 24L26 30L32 24L41 33"
+                              stroke="#219768"
+                              stroke-width="2.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"/>
+
+                        <path d="M11 4V8M37 4V8M5 13H1M47 13H43"
+                              stroke="#219768"
+                              stroke-width="2"
+                              stroke-linecap="round"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="tool-number">
+                    03 / IMAGE EDITING
+                </div>
+
+                <h3>Image Size Correcter</h3>
+
+                <p>
+                    Resize, compress and adjust image dimensions
+                    according to your required specifications.
+                </p>
+
+            </div>
+
+            <div class="card-footer">
+
+                <a class="tool-button"
+                   href="https://thakurprabhakarsingh.github.io/Image-size-correcter/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    Open Image Tool
+                    <span class="arrow">↗</span>
+
+                </a>
+
+                <span class="tool-type">
+                    IMAGE TOOL
+                </span>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- NO SEARCH RESULTS -->
+
+    <div class="no-result" id="noResult">
+        No matching tools found. Try another keyword.
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <p>
+            © 2026 Utility Hub. All rights reserved.
+        </p>
+
+        <p>
+            Designed & developed by
+            <strong>Prabhakar Singh</strong>
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+const searchInput = document.getElementById('searchInput');
+const cards = document.querySelectorAll('.tool-card');
+const count = document.getElementById('toolCount');
+const noResult = document.getElementById('noResult');
+
+searchInput.addEventListener('input', function(){
+
+    const query = this.value.toLowerCase().trim();
+
+    let visible = 0;
+
+    cards.forEach(card => {
+
+        const data = card.dataset.search.toLowerCase();
+
+        const title = card.querySelector('h3')
+                         .innerText.toLowerCase();
+
+        const match = data.includes(query) ||
+                      title.includes(query);
+
+        card.style.display = match ? 'flex' : 'none';
+
+        if(match){
+            visible++;
+        }
+
+    });
+
+    count.innerText =
+        String(visible).padStart(2,'0') +
+        (visible === 1 ? ' Tool' : ' Tools');
+
+    noResult.style.display =
+        visible === 0 ? 'block' : 'none';
+
+});
+
+</script>
+
+</body>
+          </html>
